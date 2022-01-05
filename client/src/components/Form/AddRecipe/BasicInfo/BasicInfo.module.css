@@ -1,0 +1,32 @@
+/* .inputFormContainer {
+  background-color: var(--secondary-bg-color);
+  padding: 3rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.inputFormContainer input {
+  resize: none;
+  font-size: 14px;
+  border-radius: 3px;
+  border: 2px solid #426696;
+  outline: none;
+  padding: 0.5rem 1rem;
+  min-width: 30vw;
+  
+}
+.inputFormContainer input::placeholder {
+  color: #426696;
+  font-weight: 600;
+  opacity: 1;
+  text-align: left;
+}
+.inputFormContainer .summary {
+  padding: 2rem 1rem;
+}
+ */

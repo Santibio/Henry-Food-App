@@ -1,0 +1,42 @@
+.formContainer {
+  position: relative;
+  overflow: hidden;
+  min-width: 95vw;
+  min-height: 95vh;
+  border-radius: 2rem;
+}
+.formContainer img {
+  position: absolute;
+  width: 40%;
+}
+.img1 {
+  top: -5%;
+  left: -18%;
+}
+.img2 {
+  bottom: -5%;
+  left: 70%;
+}
+
+@media only screen and (min-width: 1000px) {
+  .formContainer {
+    min-width: 90vw;
+    min-height: 80vh;
+}
+.formContainer img {
+    width: 30%;
+}
+.img2 {
+  bottom: -5%;
+  left: 80%;
+}
+}
+@media only screen and (min-width: 1300px) {
+    .formContainer {
+      min-height: 85vh;
+    min-width: 60vw;
+  }
+  .formContainer img {
+      width: 30%;
+  }
+}

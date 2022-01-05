@@ -1,44 +1,27 @@
 const { Router } = require("express");
 const router = Router();
 const { Diet } = require("../db");
-const { getAllRecipiesAPI } = require("../utils/fx_RecipeAPI");
+const { getAllRecipesAPI } = require("../utils/fx_RecipeAPI");
 
 // Configuro rutas
 router.get("/types", async (req, res, next) => {
   try {
-    const DIETS = [
-      "gluten Free",
-      "dairy free",
-      "lacto ovo vegetarian",
-      "vegan",
-      "paleolithic",
-      "primal",
-      "pescatarian",
-      "fodmap friendly" ,
-      "whole 30",
-    ]; 
-   
+    let allRecipesApi = await getAllRecipesAPI();
+    allRecipesApi = allRecipesApi.map((r) => r.diets).flat().concat("vegetarian");
+
+    const DIETS = new Set(allRecipesApi);
     DIETS.forEach((d) => {
       Diet.findOrCreate({
         where: { name: d },
       });
     });
     const allDiets = await Diet.findAll();
-    res.json(allDiets);
-
+    res.json(allDiets.map((d) => d.name));
+   
   } catch (error) {
     next(error);
-    console.log(error, "types");
+    console.log(error, "Erros at types of diets");
   }
-  /*  try {
-    const allAPIRecepies = await axios.get(
-      `https://api.spoonacular.com/recipes/716429/information?apiKey=${YOUR_API_KEY}&includeNutrition=true.`
-    );
-    return res.json(allAPIRecepies.data.results);
-  } catch (error) {
-      next(error)
-    console.log(error, "types");
-  } */
 });
 
 module.exports = router;

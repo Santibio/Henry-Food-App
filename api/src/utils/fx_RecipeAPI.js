@@ -1,19 +1,19 @@
 const axios = require("axios");
 const { YOUR_API_KEY } = process.env;
 
-const getAllRecipiesAPI = async () => {
+const getAllRecipesAPI = async () => {
   const allAPIRecepies = await axios.get(
     `https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${YOUR_API_KEY}&addRecipeInformation=true`
   );
   return mapper(allAPIRecepies.data.results);
 };
 
-const getRecipiesByNameAPI = async (name) =>{
-    const allAPIRecepies = await getAllRecipiesAPI();
+const getRecipesByNameAPI = async (name) =>{
+    const allAPIRecepies = await getAllRecipesAPI();
     return allAPIRecepies.filter((r) => r.name.toLowerCase().includes(name));
 }
 
-const getRecipieByIdAPI =  (id)=>{
+const getRecipeByIdAPI =  (id)=>{
   const recipeById =  axios
     .get(
       `https://api.spoonacular.com/recipes/${id}/information?apiKey=${YOUR_API_KEY}`
@@ -46,7 +46,7 @@ const mapper = (ArrayObj) => {
   );
 };
 module.exports = {
-  getAllRecipiesAPI,
-  getRecipiesByNameAPI,
-  getRecipieByIdAPI,
+  getAllRecipesAPI,
+  getRecipesByNameAPI,
+  getRecipeByIdAPI,
 };

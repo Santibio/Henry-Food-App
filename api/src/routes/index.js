@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const types = require('./types')
-const recipies = require("./recipies");
+const recipies = require("./recipes");
 const filters = require("./filters");
 
 

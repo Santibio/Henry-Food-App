@@ -2,48 +2,48 @@ const { Router } = require("express");
 const { Recipe, Diet } = require("../db");
 const router = Router();
 const {
-  getAllRecipiesAPI,
-  getRecipiesByNameAPI,
-  getRecipieByIdAPI,
+  getAllRecipesAPI,
+  getRecipesByNameAPI,
+  getRecipeByIdAPI,
 } = require("../utils/fx_RecipeAPI");
 const {
-  getAllRecipiesDB,
-  getRecipiesByNameDB,
-  getRecipieByIdDB,
+  getAllRecipesDB,
+  getRecipesByNameDB,
+  getRecipeByIdDB,
 } = require("../utils/fx_RecipeDB");
-const { sortRecipies } = require("../utils/fx_SortRecipies");
+const { sortRecipes } = require("../utils/fx_SortRecipes");
 const { queryValidator, formValidator } = require("../utils/fx_validators");
 
 // Configuro rutas
-router.get("/recipies", async (req, res, next) => {
+router.get("/recipes", async (req, res, next) => {
   try {
     const { name } = req.query;
-    let AllRecipiesAPI;
-    let AllRecipiesDB;
+    let AllRecipesAPI;
+    let AllRecipesDB;
     if (name) {
         if(!queryValidator(name)) return res.status(404).json({ msg: "Query invalido" });
-      AllRecipiesAPI = await getRecipiesByNameAPI(name.toLowerCase());
-      AllRecipiesDB = await getRecipiesByNameDB(name.toLowerCase());
+      AllRecipesAPI = await getRecipesByNameAPI(name.toLowerCase());
+      AllRecipesDB = await getRecipesByNameDB(name.toLowerCase());
     } else {
-      AllRecipiesAPI = await getAllRecipiesAPI();
-      AllRecipiesDB = await getAllRecipiesDB();
+      AllRecipesAPI = await getAllRecipesAPI();
+      AllRecipesDB = await getAllRecipesDB();
     }
-    return res.json(sortRecipies([...AllRecipiesAPI, ...AllRecipiesDB]));
+    return res.json(sortRecipes([...AllRecipesAPI, ...AllRecipesDB]));
   } catch (error) {
     /* next(error); */
     return res.status(404).json({ msg: "Recipe not found" });
   }
 });
 
-router.get("/recipies/:idRecipe", async (req, res, next) => {
+router.get("/recipes/:idRecipe", async (req, res, next) => {
   try {
     const { idRecipe } = req.params;
 
     if (idRecipe.includes("-")) {
-      let recipeDB = await getRecipieByIdDB(idRecipe);
+      let recipeDB = await getRecipeByIdDB(idRecipe);
       return res.json(recipeDB);
     } else {
-      let recipeAPI = await getRecipieByIdAPI(idRecipe);
+      let recipeAPI = await getRecipeByIdAPI(idRecipe);
       return res.json(recipeAPI);
     }
   } catch (error) {
@@ -54,11 +54,11 @@ router.get("/recipies/:idRecipe", async (req, res, next) => {
 
 router.post("/recipe", async (req, res, next) => {
   try {
-    const { name, summary, score, healthScore, image, diets } = req.body;
+    const { name, summary, score, healthScore, image, diets,steps } = req.body;
      if (Object.keys(formValidator(req.body)).length <= 0 ? false : true) {
        return res.json(formValidator(req.body));
      }
-    const [recipie, status] = await Recipe.findOrCreate({
+    const [recipe, status] = await Recipe.findOrCreate({
       where: {
         name: name.toLowerCase(),
       },
@@ -67,6 +67,7 @@ router.post("/recipe", async (req, res, next) => {
         score,
         healthScore,
         image,
+        steps,
       },
     });
 
@@ -74,15 +75,15 @@ router.post("/recipe", async (req, res, next) => {
       where: { name: diets },
     });
 
-     await recipie.addDiet(dietsDb);
-
+     await recipe.addDiet(dietsDb);
+console.log(status)
     return res.json(
       status
-        ? { msg: "correctly created recipe", status }
+        ? { msg: "correctly created recipe", recipe }
         : { msg: "there is already a recipe with that name", status }
     );
   } catch (error) {
- /*   next(error); */
+   next(error);
    return res.status(404).json({
      msg: "Error",
    });

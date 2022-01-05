@@ -1,0 +1,30 @@
+.innerFormContainer {
+  min-height: 95vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.innerFormContainer .tittleContainer {
+  flex: 1;
+  justify-self: center;
+  align-self: center;
+  margin-top: 2rem;
+}
+.innerFormContainer form {
+  flex: 2;
+}
+.innerFormContainer .buttonContainer {
+  flex-shrink: 1;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 1rem;
+}
+.buttonContainer button{
+  
+}
+
+

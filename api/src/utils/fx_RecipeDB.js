@@ -1,15 +1,15 @@
 const { Recipe, Diet } = require("../db");
 const { Op } = require("sequelize");
 
-const getAllRecipiesDB = async () => {
+const getAllRecipesDB = async () => {
   const allDBRecepies = await Recipe.findAll({
     include: [{ model: Diet }],
   });
   return mapper(allDBRecepies);
 
 };
-const getRecipiesByNameDB = async (name) => {
-  const recipiesByNameDB = await Recipe.findAll({
+const getRecipesByNameDB = async (name) => {
+  const recipesByNameDB = await Recipe.findAll({
     where: {
       name: {
         [Op.iLike]: `%${name}%`,
@@ -17,11 +17,11 @@ const getRecipiesByNameDB = async (name) => {
     },
     include: [{ model: Diet }],
   });
-  return mapper(recipiesByNameDB);
+  return mapper(recipesByNameDB);
 };
 
-const getRecipieByIdDB =  (id) =>{
-    const recipieByIdDB = Recipe.findByPk(id, {
+const getRecipeByIdDB =  (id) =>{
+    const recipeByIdDB = Recipe.findByPk(id, {
       include: [{ model: Diet }],
     }).then(({ id, name, summary, score, healthScore, image, diets }) => ({
       id,
@@ -32,7 +32,7 @@ const getRecipieByIdDB =  (id) =>{
       image,
       diets: diets.map((d) => d.name),
     }));
-   return recipieByIdDB;
+   return recipeByIdDB;
 }
 
 const mapper = (ArrayObj) => {
@@ -50,7 +50,7 @@ const mapper = (ArrayObj) => {
 };
 
 module.exports = {
-  getAllRecipiesDB,
-  getRecipiesByNameDB,
-  getRecipieByIdDB,
+  getAllRecipesDB,
+  getRecipesByNameDB,
+  getRecipeByIdDB,
 };

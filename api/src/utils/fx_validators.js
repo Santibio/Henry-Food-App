@@ -9,7 +9,7 @@ const videogameNameValidator = (name) => {
 };
 
 function formValidator(types) {
-  const { name, summary, image, score, healthScore, diets } = types;
+  const { name, summary, image, score, healthScore, diets, steps } = types;
   let errors = {};
   if (!name) {
     errors.name = "name is required";
@@ -31,8 +31,13 @@ function formValidator(types) {
       errors.image = "image is invalid";
     }
   }
-  if (!Array.isArray(diets) || diets.length <= 0) {
+  if (!Array.isArray(diets) ) {
     errors.diets = "diets are invalid";
+  }
+  if(steps){
+    if (!Array.isArray(steps) ) {
+      errors.steps = "steps are invalid";
+    }
   }
 
   return errors;
