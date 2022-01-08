@@ -1,0 +1,19 @@
+.deleteRecipeContainer{
+
+}
+.deleteRecipeContainer button{
+    border: none;
+    border-radius: 1rem;
+    padding: .6rem 2rem;
+    background-color: #F44336;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease,
+}
+.deleteRecipeContainer button:hover{
+     background:  #f1584d
+}
+.deleteRecipeContainer button:active{
+    transform: scale(98%);
+}

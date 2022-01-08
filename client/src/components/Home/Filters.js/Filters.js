@@ -1,16 +1,16 @@
-import React from 'react'
-import style from './Filters.module.css'
+import React, { memo } from 'react'
 import { DropdownMenu } from '../../UI/DropdownMenu/DropdownMenu'
 import { FilterDiets } from './FilterDiets';
 
 
-export const Filters = () => {
+export const Filters = memo(() => {
+  console.log("filters")
     return (
-      <div className={style.filtersContainer}>
+      <>
         <FilterDiets />
         <DropdownMenu
           filterItems={["API", "DB"]}
-          filterType="From"
+          filterType="from"
           filterName="Filter By From"
           color="#3654d1"
         />
@@ -20,6 +20,6 @@ export const Filters = () => {
           filterName="Order By"
           color="#bdc7ed"
         />
-      </div>
+      </>
     );
-}
+})

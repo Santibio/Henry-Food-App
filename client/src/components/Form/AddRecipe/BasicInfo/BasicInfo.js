@@ -1,6 +1,4 @@
-
 import style from "./BasicInfo.module.css";
-
 
 export const BasicInfo = ({ handlerChange, values, errors }) => {
   return (
@@ -11,23 +9,25 @@ export const BasicInfo = ({ handlerChange, values, errors }) => {
           name="name"
           value={values.name}
           onChange={handlerChange}
-          placeholder="Name"
+          placeholder="Name (*)"
         />
         <div className={style.danger}>
           {errors.name && <p>{errors.name}</p>}
         </div>
       </div>
-      <input
-        className={style.summary}
-        type="text"
-        name="summary"
-        value={values.summary}
-        onChange={handlerChange}
-        placeholder="Summary"
-      />
+      <div>
+        <input
+          className={style.summary}
+          type="text"
+          name="summary"
+          value={values.summary}
+          onChange={handlerChange}
+          placeholder="Summary (*)"
+        />
         <div className={style.danger}>
           {errors.summary && <p>{errors.summary}</p>}
         </div>
+      </div>
       <div>
         <input
           type="text"
@@ -53,7 +53,6 @@ export const BasicInfo = ({ handlerChange, values, errors }) => {
         <div className={style.danger}>
           {errors.score && <p>{errors.score}</p>}
         </div>
-        
       </div>
       <div>
         <input
@@ -67,6 +66,19 @@ export const BasicInfo = ({ handlerChange, values, errors }) => {
         />
         <div className={style.danger}>
           {errors.healthScore && <p>{errors.healthScore}</p>}
+        </div>
+      </div>
+      <div>
+        <input
+          type="number"
+          name="readyInMinutes"
+          value={values.readyInMinutes ? values.readyInMinutes : ""}
+          onChange={handlerChange}
+          placeholder="Ready In Minutes"
+          min="0"
+        />
+        <div className={style.danger}>
+          {errors.readyInMinutes && <p>{errors.readyInMinutes}</p>}
         </div>
       </div>
     </div>

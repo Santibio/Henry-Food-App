@@ -1,23 +1,64 @@
+.noFound_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+.noFound_container p {
+  margin-top: 5rem;
+  font-size: 2rem;
+}
+.cards_container {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: auto;
+}
+.buttons_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
 
+@media only screen and (min-width: 768px) {
+  .cards_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .cards_container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (min-width: 1300px) {
+  .cards_container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+/* 
 .gamesDisplay {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  min-height: 68vh;
+ 
+  min-height: 60vh;
+
 }
 .noFound_container {
   height: 68vh;
   max-width: 60vw;
   display: flex;
   justify-content: center;
- /*  align-content: center; */
+
 }
 .noFound_container p{
   margin-top: 5rem;
   font-size: 2rem;
 }
 .cards_container {
-  height: 68vh;
+  height: 60vh;
   overflow-y: scroll;
   display: grid;
   padding: 0 3rem;
@@ -45,7 +86,9 @@
 
 @media only screen and (max-width: 900px) {
   .cards_container {
-    /* height: auto; */
     grid-template-columns: repeat(1, 1fr);
+    height: 1000vh;
   }
+
 }
+ */

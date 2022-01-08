@@ -6,13 +6,13 @@ const Diets = ({ dietsHandler }) => {
   const addDiets = (e) => {
     dietsHandler(e);
   };
-  /* const { diets } = useSelector((state) => state); */
- const { dietsSinBack } = useSelector((state) => state); 
+  const { diets } = useSelector((state) => state);
+/*  const { dietsSinBack } = useSelector((state) => state);  */
   return (
-    <div>
-      <label>Diets</label>
+    <div className={style.inputFormContainer}>
+      <label>Choose between different types of diets</label>
       <div className={style.dietsContainter}>
-        {dietsSinBack.map((diet) => (
+        {diets.map((diet) => (
           <span key={diet}>
             <input
               type="checkbox"

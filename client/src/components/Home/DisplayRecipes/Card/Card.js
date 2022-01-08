@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Card2 = ({ id, name, img, diets }) => {
   return (
-    <figure key={id}>
+    <figure key={id} className= {style.swing_in_top_bck}>
       {img && <img src={img} alt="" />}
       <figcaption>
         <h3>{name}</h3>
@@ -15,7 +15,7 @@ const Card2 = ({ id, name, img, diets }) => {
           ))}
         </p>
         <Link
-          to={`/home/recipe/${id}`}
+          to={`/recipe/${id}`}
           className={style.Link}
           style={{ color: "black" }}
         >

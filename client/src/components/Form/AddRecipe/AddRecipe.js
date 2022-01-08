@@ -1,11 +1,11 @@
 import React, { memo, useEffect, useState } from "react";
 import style from "./AddRecipe.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { getDiets } from "../../../actions";
 import { BasicInfo } from "./BasicInfo/BasicInfo";
 import Diets from "./Diets/Diets";
-import Steps from "./Steps/Steps";
+import Steps2 from "./Steps/Steps2";
 import axios from "axios";
 import {
   basicInfoValidator,
@@ -14,7 +14,7 @@ import {
 
 export const AddRecipe = memo(() => {
   const [dietsForm, setDietsForm] = useState([]);
-  const [errors, setErrors] = useState({ invalid: "on" });
+  const [errors, setErrors] = useState({ errors: "" });
   const [inputForm, setInputForm] = useState({
     fase: 1,
     name: "",
@@ -23,22 +23,16 @@ export const AddRecipe = memo(() => {
     healthScore: 0,
     image: "",
     steps: [],
+    readyInMinutes: 0,
   });
-  const { fase, name, summary, score, healthScore, image, steps, diets } =
-    inputForm;
-  const values = {
-    name,
-    summary,
-    score,
-    healthScore,
-    image,
-    steps,
-  };
+  const { fase } = inputForm;
 
-  /*  const dispatch = useDispatch(); 
+  const history = useHistory();
+
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDiets());
-  }, [dispatch]); */
+  }, [dispatch]);
 
   const nextFase = (e) => {
     e.preventDefault();
@@ -54,7 +48,6 @@ export const AddRecipe = memo(() => {
   };
   const prevFase = (e) => {
     e.preventDefault();
-    const { fase } = inputForm;
     setInputForm({
       ...inputForm,
       fase: fase - 1,
@@ -73,12 +66,14 @@ export const AddRecipe = memo(() => {
       })
     );
   };
-  const addStepsToValues = (steps) => {
+
+ const stepsHandler = (step) => {
     setInputForm((prev) => ({
       ...prev,
-      steps: steps,
+      steps: [...prev.steps, { number: prev.steps.length + 1, step:step }],
     }));
-  };
+  }; 
+
 
   const dietsHandler = (e) => {
     const { checked, value } = e.target;
@@ -100,28 +95,57 @@ export const AddRecipe = memo(() => {
       .post("http://localhost:3001/api/recipe", RECIPE, {
         headers: { "Content-Type": "application/json" },
       })
-      .then((r) => console.log(r.data));
+      .then((r) => {
+        if (r.data.status) {
+          console.log(r.data.status);
+          alert(r.data.msg);
+          history.push("/home");
+        } else {
+          console.log(r.data.status);
+          alert(r.data.msg);
+          setInputForm({
+            ...inputForm,
+            fase: 1,
+          });
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
+  console.log(inputForm);
 
   return (
     <div className={style.innerFormContainer}>
       <div className={style.tittleContainer}>
-        <h2>Add your recipe</h2>
+        <h1>Add your recipe</h1>
       </div>
       <form onSubmit={submitHandler}>
         {fase === 1 && (
           <BasicInfo
             handlerChange={handlerChange}
-            values={values}
+            values={inputForm}
             errors={errors}
           />
         )}
         {fase === 2 && <Diets dietsHandler={dietsHandler} />}
-        {fase === 3 && <Steps addStepsToValues={addStepsToValues} />}
+        {/*  {fase === 3 && <Steps stepsHandler={stepsHandler}/>} */}
+        {fase === 3 && (
+          <Steps2
+            handlerChange={handlerChange}
+            values={inputForm}
+            stepsHandler={stepsHandler}
+          />
+        )}
       </form>
       <div className={style.buttonContainer}>
         {fase > 1 && <button onClick={prevFase}>Prev</button>}
         {fase < 3 && <button onClick={nextFase}>Next</button>}
+        {fase === 3 && (
+          <button type="submit" onClick={submitHandler}>
+            Confirm
+          </button>
+        )}
       </div>
     </div>
   );

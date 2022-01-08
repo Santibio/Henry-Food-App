@@ -1,8 +1,14 @@
-const { getAllRecipiesAPI } = require("./fx_RecipeAPI");
+const { getAllRecipesAPI } = require("./fx_RecipeAPI");
 
-const getAllDiets = ()=>{
-    const allRecopiesAPI = getAllRecipiesAPI()
-    return 
+const getAllDiets = async()=>{
+     let allRecipesApi = await getAllRecipesAPI();
+     allRecipesApi = allRecipesApi
+       .map((r) => r.diets)
+       .flat()
+       .concat("vegetarian");
+
+     const DIETS = new Set(allRecipesApi);
+     return DIETS;
 }
 module.exports = {
   getAllDiets,

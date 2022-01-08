@@ -4,27 +4,46 @@
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  gap: 1rem;
 }
 
 .innerFormContainer .tittleContainer {
-  flex: 1;
-  justify-self: center;
-  align-self: center;
-  margin-top: 2rem;
+  margin: 2rem;
+}
+.tittleContainer h1 {
+  text-align: left;
 }
 .innerFormContainer form {
-  flex: 2;
+  border-radius: 2rem;
+  width: 95%;
+  height: 60vh;
+  background-color: var(--secondary-bg-color);
+  border-radius: 1rem;
 }
 .innerFormContainer .buttonContainer {
-  flex-shrink: 1;
-  margin-bottom: 2rem;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  gap: 1rem;
+  margin-top: 2rem;
 }
-.buttonContainer button{
-  
+.buttonContainer button {
+  background-color: var(--secondary-bg-color);
+  border: none;
+  padding: 0.3rem 1rem;
+  margin: 1rem;
+  font-size: 1.2rem;
+  border-radius: 2rem;
+  cursor: pointer;
 }
-
-
+@media only screen and (min-width: 500px) {
+  .innerFormContainer form {
+    width: 60%;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .innerFormContainer form {
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 1300px) {
+  .innerFormContainer form {
+    width: 60;
+  }
+}

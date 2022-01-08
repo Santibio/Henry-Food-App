@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import style from './Steps.module.css'
+import style from "./Steps.module.css";
 
 const Steps = ({ addStepsToValues }) => {
   const [addSteps, setAddSteps] = useState([]);
@@ -11,33 +11,35 @@ const Steps = ({ addStepsToValues }) => {
 
   useEffect(() => {
     addStepsToValues(addSteps);
-  }, [addSteps]);
+  }, [addStepsToValues]);
+
 
   const addStepHandler = (e) => {
-    e.preventDefault()
-    if (step.trim().length > 0){
+    e.preventDefault();
+    if (step.trim().length > 0) {
       setAddSteps((prev) => [...prev, { number: prev.length + 1, step }]);
+/* 
+      addStepsToValues(addSteps); */
       setStep("");
-    } else{
-      alert("Step cannot be empty")
+    } else {
+      alert("Step cannot be empty");
     }
   };
 
-
-
   return (
     <div>
-      <div className={style.stepContainer}>
-        <h2>Steps</h2>
-        <input type="text" onChange={stepHandler} value={step} />
-        <button onClick={addStepHandler}>Add step</button>
+      <div className={style.inputFormContainer}>
+        <label>Steps</label>
+        <div className={style.stepContainer}>
+          <input type="text" onChange={stepHandler} value={step} />
+          <button onClick={addStepHandler}>Add Step</button>
+        </div>
         <ol>
           {addSteps.map((s) => (
             <li key={s.number}>{s.step}</li>
           ))}
         </ol>
       </div>
-      <button type="submit">Add new recipe</button>
     </div>
   );
 };

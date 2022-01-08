@@ -1,0 +1,26 @@
+.img1,
+.img2,
+.img3 {
+  width: 30%;
+  position: absolute;
+  z-index: 1;
+}
+.img1 {
+  bottom: -20vh;
+  right: -10vh;
+}
+.img2 {
+  bottom: 50vh;
+  left: -18vh;
+}
+
+.img3 {
+  top: -10vh;
+  right: -50vh;
+}
+
+@media only screen and (min-width: 650px) {
+  .recipeDetailContainer {
+    width: 80vw;
+  }
+}

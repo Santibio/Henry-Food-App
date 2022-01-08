@@ -3,11 +3,10 @@
 :root {
   /* Background Colors */
   --main-bg-color: #d7dcf3;
-  --secondary-bg-color: #F9F8FD;
+  --secondary-bg-color: #f9f8fd;
 
   --circle1-bg-color: #3654d1;
   --circle2-bg-color: #bdc7ed;
-
 
   --fourth-bg-color: #50b5d4;
   --fifth-bg-color: #5ef7be;
@@ -25,9 +24,16 @@
   /* Button Color */
   --main-btn-color: #2a6cd4;
   --second-btn-color: #01b1f6;
+
+  /* Breakpoitn */
+  --sm-bk: 576px;
+  --md-bk: 768px;
+  --lg-bk: 992px;
+  --xl-bk: 1200px;
+  --xxl-bk: 1400px;
 }
 
-body,html,* {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -35,14 +41,19 @@ body,html,* {
   font-family: "Montserrat", sans-serif;
   scrollbar-width: auto;
   scrollbar-color: #ffffff #00000000;
+  text-transform: capitalize;
 }
 
+body {
+  overflow-x: hidden;
+}
 
 h1 {
   color: var(--main-h1-color);
   font-weight: 600;
   font-size: 3rem;
   opacity: 0.8;
+  text-transform: capitalize;
 }
 h2,
 p {

@@ -3,6 +3,7 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
+
   sequelize.define(
     "recipe",
     {
@@ -20,6 +21,12 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       score: {
+        type: DataTypes.INTEGER,
+        validate: {
+          isInt: true,
+        },
+      },
+      readyInMinutes: {
         type: DataTypes.INTEGER,
         validate: {
           isInt: true,

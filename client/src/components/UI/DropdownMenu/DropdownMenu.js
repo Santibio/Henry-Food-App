@@ -10,9 +10,9 @@ const Select = styled.select`
   outline: 0;
   font: inherit;
   /* Personalize */
-  max-width: 13rem;
-  height: 3em;
-  padding: 0 4em 0 1em;
+  width: 10.6rem;
+  height: 2.5em;
+  padding: 0 4em 0 0.8em;
   background: url("https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg")
     no-repeat right 1.5em center / 1em;
   color: #fff;
@@ -21,10 +21,11 @@ const Select = styled.select`
   box-shadow: 0 0.2rem 0.2em 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: background 0.2s ease, padding 0.3s ease;
-
+  font-size: 0.9rem;
+  
   &:focus {
     outline: none;
-    padding: 0 4.2em 0 1.3em;
+    padding: 0 4em 0 1em;
   }
   &::-ms-expand {
     display: none;
@@ -57,10 +58,11 @@ export const DropdownMenu = ({
         arrowu={arrowu}
         defaultValue="0"
         color={color}
-        onClick={optionHandler}
+        /*  onClick={optionHandler} */
+        onChange={optionHandler}
       >
         <Option value="0">{filterName}</Option>
-        {filterItems?.map((e, i) => (
+        {filterItems?.map((e) => (
           <Option value={e} key={e}>
             {e}
           </Option>

@@ -1,13 +1,12 @@
-/* .inputFormContainer {
-  background-color: var(--secondary-bg-color);
-  padding: 3rem;
-  border-radius: 1rem;
+.inputFormContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-content: center;
   flex-direction: column;
   gap: 1rem;
   width: 100%;
+  margin-top: 1rem;
+  padding: 2rem .5rem;
 }
 
 .inputFormContainer input {
@@ -17,8 +16,7 @@
   border: 2px solid #426696;
   outline: none;
   padding: 0.5rem 1rem;
-  min-width: 30vw;
-  
+  width: 90%
 }
 .inputFormContainer input::placeholder {
   color: #426696;
@@ -29,4 +27,8 @@
 .inputFormContainer .summary {
   padding: 2rem 1rem;
 }
- */
+
+.danger p{
+  color: rgb(189, 35, 35);
+  text-transform: capitalize;
+}

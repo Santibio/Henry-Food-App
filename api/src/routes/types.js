@@ -1,26 +1,29 @@
 const { Router } = require("express");
 const router = Router();
 const { Diet } = require("../db");
-const { getAllRecipesAPI } = require("../utils/fx_RecipeAPI");
+const { getAllDiets } = require("../utils/fx_Diets");
 
-// Configuro rutas
+// Configuro rutas diet types
 router.get("/types", async (req, res, next) => {
   try {
-    let allRecipesApi = await getAllRecipesAPI();
-    allRecipesApi = allRecipesApi.map((r) => r.diets).flat().concat("vegetarian");
-
-    const DIETS = new Set(allRecipesApi);
-    DIETS.forEach((d) => {
-      Diet.findOrCreate({
-        where: { name: d },
-      });
-    });
     const allDiets = await Diet.findAll();
-    res.json(allDiets.map((d) => d.name));
-   
+    if (allDiets.length <= 0) {
+      console.log("Types of diets  API");
+      const DIETS =  await getAllDiets()
+      DIETS.forEach((d) => {
+        Diet.findOrCreate({
+          where: { name: d },
+        });
+      });
+      const allDietsNew = await Diet.findAll();
+      res.status(200).json(allDietsNew.map((d) => d.name)); 
+    } else {
+      console.log('Types of diets DB')
+      res.status(200).json(allDiets.map((d) => d.name));
+    }
   } catch (error) {
     next(error);
-    console.log(error, "Erros at types of diets");
+    console.log(error, "Errors at types of diets");
   }
 });
 

@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { memo } from 'react'
+import { Link } from 'react-router-dom'
 
-export const Title = ({children}) => {
+
+export const Title = memo(({children}) => {
+    console.log('Title')
     return (
         <div>
-            <h1>{children}</h1>
+            <Link to="/home" style={{cursor: "pointer"}}><h1>{children}</h1></Link>
         </div>
     )
-}
+})

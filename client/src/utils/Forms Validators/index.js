@@ -4,6 +4,7 @@ export function basicInfoValidator({
   score,
   healthScore,
   image,
+  readyInMinutes,
 }) {
   let errors = {};
   if (!name) {
@@ -15,14 +16,30 @@ export function basicInfoValidator({
     errors.summary = "summary is required";
   }
   if (score) {
+    if (typeof score !== "number") {
+      console.log("si");
+      errors.score = "score needs to be a number";
+    }
     if (score < 0 || score > 100) {
-      errors.score = "score is invalid, it must be between 0 and 100";
+      errors.score = "score is invalid, it must be a number between 0 and 100";
     }
   }
   if (healthScore) {
+    if (typeof +healthScore !== "number") {
+      errors.score = "score needs to be a number";
+    }
     if (healthScore < 0 || healthScore > 100) {
       errors.healthScore =
         "health Score is invalid, it must be between 0 and 100";
+    }
+  }
+  if (readyInMinutes) {
+    if (typeof readyInMinutes !== "number") {
+      errors.readyInMinutes = "Ready In Minutes needs to be a number";
+    }
+    if (readyInMinutes <= 0) {
+      errors.readyInMinutes =
+        "Ready In Minutes is invalid, it must be greater than 0";
     }
   }
   if (image) {

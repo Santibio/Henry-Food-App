@@ -3,8 +3,7 @@ import styled from "styled-components";
 const Glass = styled.div`
   position: relative;
   background: white;
- /*  height: 90vh; */
-  /* max-width: ${(props) => (props.width ? props.width : "90%")}; */
+  margin: 0.5rem;
   background: linear-gradient(
     to right,
     rgba(255, 255, 255, 1),
@@ -13,15 +12,10 @@ const Glass = styled.div`
   border-radius: 2rem;
   z-index: 2;
   backdrop-filter: blur(3rem);
-  overflow: hidden
-  /* @media only screen and (max-width: 820px) {
-    width: 95%; */
-    /* min-height: 98vh; */
- /*  }
-  @media only screen and (max-width: 400px) {
-    width: 95%; */
-   /*  height: auto; */
-/*   } */
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  @media only screen and (min-width: 768px) {
+    margin: 4rem;
+  }
 `;
 
 export default Glass;

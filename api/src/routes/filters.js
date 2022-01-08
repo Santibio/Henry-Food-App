@@ -22,7 +22,6 @@ router.get("/filter", async (req, res, next) => {
     }
     if (from) {
       if (from === "API") {
-          
         let recipesAPI = await getAllRecipesAPI();
         return res.json(sortRecipes(recipesAPI));
       }
