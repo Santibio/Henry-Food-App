@@ -16,7 +16,8 @@
   border: 2px solid #426696;
   outline: none;
   padding: 0.5rem 1rem;
-  width: 90%
+  width: 90%;
+
 }
 .inputFormContainer input::placeholder {
   color: #426696;
@@ -30,5 +31,5 @@
 
 .danger p{
   color: rgb(189, 35, 35);
-  text-transform: capitalize;
+
 }

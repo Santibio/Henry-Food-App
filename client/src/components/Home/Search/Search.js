@@ -13,7 +13,6 @@ export const Search = memo(() => {
   const searchHandler = (e) => {
     if (e.key === "Enter") {
       if (inputSearch.trim().length > 0) {
-        dispatch(deleteRecipes());
         setInputSearch("")
         return history.push(`/home/search/${inputSearch}`);
       } else alert("You need to enter a value");
@@ -25,7 +24,11 @@ export const Search = memo(() => {
   return (
     <>
       <div className={style.searchBar}>
-        <FaSearch color="#121418" width="auto" className={style.searchIcon} />
+        <FaSearch
+          color="#121418"
+          width="auto"
+          className={style.searchIcon}
+        />
         <input
           type="text"
           placeholder="Search By Name"

@@ -24,6 +24,7 @@ export const AddRecipe = memo(() => {
     image: "",
     steps: [],
     readyInMinutes: 0,
+    prueba: 0
   });
   const { fase } = inputForm;
 
@@ -90,19 +91,24 @@ export const AddRecipe = memo(() => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const RECIPE = { ...inputForm, diets: [...new Set(dietsForm)] };
+    const RECIPE = {
+      ...inputForm,
+      score: parseInt(inputForm.score),
+      healthScore: parseInt(inputForm.healthScore),
+      readyInMinutes: parseInt(inputForm.readyInMinutes),
+      diets: [...new Set(dietsForm)],
+    };
+
     axios
       .post("http://localhost:3001/api/recipe", RECIPE, {
         headers: { "Content-Type": "application/json" },
       })
       .then((r) => {
         if (r.data.status) {
-          console.log(r.data.status);
           alert(r.data.msg);
           history.push("/home");
         } else {
-          console.log(r.data.status);
-          alert(r.data.msg);
+          alert(r.data.msg || "An error occurred");
           setInputForm({
             ...inputForm,
             fase: 1,
@@ -113,7 +119,7 @@ export const AddRecipe = memo(() => {
         console.log(e);
       });
   };
-  console.log(inputForm);
+
 
   return (
     <div className={style.innerFormContainer}>

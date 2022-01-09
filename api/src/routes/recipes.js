@@ -23,20 +23,19 @@ router.get("/recipes", async (req, res, next) => {
     let AllRecipesAPI;
     let AllRecipesDB;
     if (name) {
-      if (!queryValidator(name))
-        return res.status(404).json({ msg: "Query invalido" });
       AllRecipesAPI = await getRecipesByNameAPI(name.toLowerCase());
       AllRecipesDB = await getRecipesByNameDB(name.toLowerCase());
     } else {
-      AllRecipesAPI = await getAllRecipesAPI();
-      AllRecipesDB = await getAllRecipesDB();
+        AllRecipesAPI = await getAllRecipesAPI();
+        AllRecipesDB = await getAllRecipesDB();
     }
+    
+    
     return res
       .status(200)
       .json(sortRecipes([...AllRecipesAPI, ...AllRecipesDB]));
   } catch (error) {
-    /* next(error); */
-    return res.status(404).json({ msg: "Recipe not found" });
+    next(error)
   }
 });
 
@@ -79,6 +78,7 @@ router.post("/recipe", async (req, res, next) => {
       return res.json(formValidator(req.body));
     }
 
+
     const [recipe, status] = await Recipe.findOrCreate({
       where: {
         name: name.toLowerCase(),
@@ -89,7 +89,7 @@ router.post("/recipe", async (req, res, next) => {
         healthScore,
         image,
         steps,
-        readyInMinutes,
+        readyInMinutes
       },
     });
 
@@ -101,7 +101,7 @@ router.post("/recipe", async (req, res, next) => {
 
     return res.json(
       status
-        ? { msg: "Correctly created recipe", status }
+        ? { msg: "Correctly created recipe", status, recipe }
         : { msg: "There is already a recipe with that name", status }
     );
   } catch (error) {

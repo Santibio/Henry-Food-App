@@ -10,7 +10,7 @@ const Select = styled.select`
   outline: 0;
   font: inherit;
   /* Personalize */
-  width: 10.6rem;
+  width: 13rem;
   height: 2.5em;
   padding: 0 4em 0 0.8em;
   background: url("https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg")
@@ -22,7 +22,7 @@ const Select = styled.select`
   cursor: pointer;
   transition: background 0.2s ease, padding 0.3s ease;
   font-size: 0.9rem;
-  
+
   &:focus {
     outline: none;
     padding: 0 4em 0 1em;
@@ -39,16 +39,17 @@ const Option = styled.option`
   transition: all 2s ease;
 `;
 
-export const DropdownMenu = ({
-  filterName,
+export const DropdownMenu2 = ({
   filterItems,
   color,
-  filterType,
 }) => {
   const history = useHistory();
   const optionHandler = (e) => {
-    if (e.target.value === "0") return;
-    history.push(`/home/${filterType}/${e.target.value}`);
+   
+    if (e.target.value === "0") return history.push(`/home/`);
+    if (e.target.value === "DB" || e.target.value === "API")
+      return history.push(`/home/origin/${e.target.value}`);
+    else return  history.push(`/home/diets/${e.target.value}`);
   };
   return (
     <div>
@@ -60,12 +61,22 @@ export const DropdownMenu = ({
         color={color}
         onChange={optionHandler}
       >
-        <Option value="0">{filterName}</Option>
-        {filterItems?.map((e) => (
-          <Option value={e} key={e}>
-            {e}
+        <Option value="0">Filter by</Option>
+        <optgroup label="Diets">
+          {filterItems?.map((e) => (
+            <Option value={e} key={e} name="diet">
+              {e}
+            </Option>
+          ))}
+        </optgroup>
+        <optgroup label="Origin">
+          <Option value="API" key="API" filterType="origin">
+            API
           </Option>
-        ))}
+          <Option value="DB" key="DB" filterType="origin">
+            DB
+          </Option>
+        </optgroup>
       </Select>
     </div>
   );

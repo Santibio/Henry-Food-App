@@ -3,15 +3,13 @@ const { Op } = require("sequelize");
 
 const getAllRecipesDB = async () => {
   try {
-     const allDBRecepies = await Recipe.findAll({
-       include: [{ model: Diet }],
-     });
-     return mapper(allDBRecepies);
+    const allDBRecepies = await Recipe.findAll({
+      include: [{ model: Diet }],
+    });
+    return mapper(allDBRecepies);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
- 
-
 };
 const getRecipesByNameDB = async (name) => {
   try {
@@ -25,41 +23,60 @@ const getRecipesByNameDB = async (name) => {
     });
     return mapper(recipesByNameDB);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-  
 };
 
-const getRecipeByIdDB =  (id) =>{
-    const recipeByIdDB = Recipe.findByPk(id, {
-      include: [{ model: Diet }],
-    })
-    .then(
-      ({ id, name, summary, score, healthScore, image, diets, steps }) => ({
-        id,
-        name,
-        summary,
-        score,
-        healthScore,
-        image,
-        steps: steps.map(s=> s.step),
-        diets: diets.map((d) => d.name),
-        origin: "DB",
-      })
-    );
-    
-   return recipeByIdDB;
-}
-
-const mapper = (ArrayObj) => {
-  return ArrayObj.map(
-    ({ id, name, summary, score, healthScore, image, diets }) => ({
+const getRecipeByIdDB = (id) => {
+  const recipeByIdDB = Recipe.findByPk(id, {
+    include: [{ model: Diet }],
+  }).then(
+    ({
       id,
       name,
       summary,
       score,
       healthScore,
       image,
+      readyInMinutes,
+      diets,
+      steps,
+    }) => ({
+      id,
+      name,
+      summary,
+      score,
+      healthScore,
+      image,
+      readyInMinutes,
+      steps: steps.map((s) => s.step),
+      diets: diets.map((d) => d.name),
+      origin: "DB",
+    })
+  );
+
+  return recipeByIdDB;
+};
+
+const mapper = (ArrayObj) => {
+  return ArrayObj.map(
+    ({
+      id,
+      name,
+      summary,
+      score,
+      healthScore,
+      image,
+      diets,
+      readyInMinutes,
+    }) => ({
+      id,
+      name,
+      summary,
+      score,
+      healthScore,
+      image,
+      readyInMinutes,
       diets: diets.map((d) => d.name),
     })
   );

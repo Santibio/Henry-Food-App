@@ -16,24 +16,25 @@ import Loading from "../../UI/Loading/Loading";
 import ButtonPrev from "../../UI/ButtonsPage/ButtonPrev";
 import ButtonNext from "../../UI/ButtonsPage/ButtonNext";
 
-export const DisplayRecipes = memo(() => {
+export const DisplayRecipes = () => {
   const { filter, type, search } = useParams();
   const { recipes } = useSelector((state) => state);
   const NUM_PAGES = 9;
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (filter === "order") return dispatch(orderBy(type));
     if (filter) {
+      if (filter === "order") return dispatch(orderBy(type));
       dispatch(deleteRecipes());
       return dispatch(filterBy(filter, type));
     }
     if (search) {
-      console.log(search);
       return dispatch(searchRecepi(search));
     }
     dispatch(getRecipes());
-     dispatch(deleteRecipeDetail());
+    return function cleanup() {
+      dispatch(deleteRecipeDetail());
+    };
   }, [dispatch, filter, type, search]);
 
   const [currentPage, setCurrentPage] = useState(0);
@@ -75,4 +76,4 @@ export const DisplayRecipes = memo(() => {
       )}
     </>
   );
-});
+};

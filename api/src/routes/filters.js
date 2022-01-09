@@ -10,7 +10,7 @@ const router = Router();
 router.get("/filter", async (req, res, next) => {
   try {
     console.log(req.query);
-    const { diets, from } = req.query;
+    const { diets, origin } = req.query;
   
     if (diets) {
       let recipesAPI = await getAllRecipesAPI();
@@ -20,12 +20,12 @@ router.get("/filter", async (req, res, next) => {
       );
       return res.json(sortRecipes(allRecipes));
     }
-    if (from) {
-      if (from === "API") {
+    if (origin) {
+      if (origin === "API") {
         let recipesAPI = await getAllRecipesAPI();
         return res.json(sortRecipes(recipesAPI));
       }
-      if (from === "DB") {
+      if (origin === "DB") {
         let recipesDB = await getAllRecipesDB();
         return res.json(sortRecipes(recipesDB));
       }
@@ -33,6 +33,7 @@ router.get("/filter", async (req, res, next) => {
     return res.status(404).json({ msg: "Error in querys" });
   } catch (error) {
     next(error);
+
     res.status(404).json({msg:'Error in querys'});
   }
 });
