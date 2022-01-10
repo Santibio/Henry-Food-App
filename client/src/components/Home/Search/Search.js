@@ -3,17 +3,15 @@ import style from "./Search.module.css";
 import { FaSearch } from "react-icons/fa";
 import { GrAdd } from "react-icons/gr";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { deleteRecipes } from "../../../actions";
 
 export const Search = memo(() => {
-  const dispatch = useDispatch();
+  console.log('Search')
   const [inputSearch, setInputSearch] = useState("");
-  const history = useHistory()
+  const history = useHistory();
   const searchHandler = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" || e.target.value === undefined) {
       if (inputSearch.trim().length > 0) {
-        setInputSearch("")
+        setInputSearch("");
         return history.push(`/home/search/${inputSearch}`);
       } else alert("You need to enter a value");
     }
@@ -28,6 +26,8 @@ export const Search = memo(() => {
           color="#121418"
           width="auto"
           className={style.searchIcon}
+          onClick={searchHandler}
+          value="searchIcon"
         />
         <input
           type="text"
@@ -43,4 +43,4 @@ export const Search = memo(() => {
       </div>
     </>
   );
-})
+});

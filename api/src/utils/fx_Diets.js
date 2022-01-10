@@ -6,6 +6,7 @@ const getAllDiets = async()=>{
        .map((r) => r.diets)
        .flat()
        .concat("vegetarian");
+     
 
      const DIETS = new Set(allRecipesApi);
      return DIETS;

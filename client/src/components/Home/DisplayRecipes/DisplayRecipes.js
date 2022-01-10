@@ -1,14 +1,13 @@
-import React, { memo, useState } from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import {
   deleteRecipes,
   filterBy,
   getRecipes,
   orderBy,
   searchRecepi,
-  deleteRecipeDetail,
 } from "../../../actions";
 import Card from "./Card/Card";
 import style from "./DisplayRecipes.module.css";
@@ -21,20 +20,19 @@ export const DisplayRecipes = () => {
   const { recipes } = useSelector((state) => state);
   const NUM_PAGES = 9;
   const dispatch = useDispatch();
+  const history = useHistory()
 
   useEffect(() => {
     if (filter) {
-      if (filter === "order") return dispatch(orderBy(type));
+      if (filter === "order")  return dispatch(orderBy(type))
       dispatch(deleteRecipes());
       return dispatch(filterBy(filter, type));
     }
     if (search) {
+      dispatch(deleteRecipes());
       return dispatch(searchRecepi(search));
     }
-    dispatch(getRecipes());
-    return function cleanup() {
-      dispatch(deleteRecipeDetail());
-    };
+    dispatch(getRecipes(history));
   }, [dispatch, filter, type, search]);
 
   const [currentPage, setCurrentPage] = useState(0);

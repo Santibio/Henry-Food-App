@@ -5,7 +5,7 @@
   flex-direction: column;
   max-width: 95vw;
   padding: 0 1rem 3rem 1rem;
-  gap: 1rem;
+  gap: 2rem;
 }
 .noFound_container {
   display: flex;
@@ -40,6 +40,7 @@
   justify-content: center;
   align-items: flex-start;
   padding: 0 1rem;
+  
 }
 .summaryContainer {
   padding: 0 1rem;
@@ -78,6 +79,9 @@
   }
   .stepsContainer {
     padding: 0 10rem;
+  }
+  .portadaContainer {
+    width: 78vw;
   }
 }
 /*

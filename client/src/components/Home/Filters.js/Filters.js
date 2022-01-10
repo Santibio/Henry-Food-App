@@ -3,6 +3,7 @@ import { DropdownMenu } from "../../UI/DropdownMenu/DropdownMenu";
 import { FilterDiets } from "./FilterDiets";
 
 export const Filters = memo(() => {
+  console.log('Filters')
   return (
     <>
       <FilterDiets />

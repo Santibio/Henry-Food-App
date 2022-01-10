@@ -29,8 +29,6 @@ router.get("/recipes", async (req, res, next) => {
         AllRecipesAPI = await getAllRecipesAPI();
         AllRecipesDB = await getAllRecipesDB();
     }
-    
-    
     return res
       .status(200)
       .json(sortRecipes([...AllRecipesAPI, ...AllRecipesDB]));
@@ -54,7 +52,7 @@ router.get("/recipes/:idRecipe", async (req, res, next) => {
       return res.json(recipeAPI);
     }
   } catch (error) {
-    /*  next(error); */
+     next(error);
     return res.json({ msg: "Recipe not found" });
   }
 });
@@ -120,9 +118,8 @@ router.delete("/recipe/:idRecipe", (req, res, next) => {
     },
   })
     .then(() => res.json({ msg: "Successfully deleted" }))
-    .catch((e) => {
-      next(e);
-      console.log(e);
+    .catch((error) => {
+      next(error);
     });
 });
 

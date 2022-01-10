@@ -23,7 +23,6 @@ router.get("/types", async (req, res, next) => {
     }
   } catch (error) {
     next(error);
-    console.log(error, "Errors at types of diets");
   }
 });
 

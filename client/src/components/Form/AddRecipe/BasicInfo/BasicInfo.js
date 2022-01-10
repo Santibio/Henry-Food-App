@@ -10,7 +10,8 @@ export const BasicInfo = ({ handlerChange, values, errors }) => {
           value={values.name}
           onChange={handlerChange}
           placeholder="Name (*)"
-        />
+          required
+          />
         <div className={style.danger}>
           {errors.name && <p>{errors.name}</p>}
         </div>
@@ -20,9 +21,10 @@ export const BasicInfo = ({ handlerChange, values, errors }) => {
           className={style.summary}
           type="text"
           name="summary"
-          value={values.summary}
+          value={values?.summary}
           onChange={handlerChange}
           placeholder="Summary (*)"
+          required
         />
         <div className={style.danger}>
           {errors.summary && <p>{errors.summary}</p>}
@@ -32,7 +34,7 @@ export const BasicInfo = ({ handlerChange, values, errors }) => {
         <input
           type="text"
           name="image"
-          value={values.image}
+          value={values?.image}
           onChange={handlerChange}
           placeholder="Image URL"
         />
@@ -44,14 +46,14 @@ export const BasicInfo = ({ handlerChange, values, errors }) => {
         <input
           type="number"
           name="score"
-          value={values.score ? values.score : ""}
+          value={values?.score ? values.score : ""}
           onChange={handlerChange}
           placeholder="Score (0 to 100)"
           min="0"
           max="100"
         />
         <div className={style.danger}>
-          {errors.score && <p>{errors.score}</p>}
+          {errors?.score && <p>{errors.score}</p>}
         </div>
       </div>
       <div>
@@ -72,7 +74,7 @@ export const BasicInfo = ({ handlerChange, values, errors }) => {
         <input
           type="number"
           name="readyInMinutes"
-          value={values.readyInMinutes ? values.readyInMinutes : ""}
+          value={values?.readyInMinutes ? values.readyInMinutes : ""}
           onChange={handlerChange}
           placeholder="Ready In Minutes"
           min="0"

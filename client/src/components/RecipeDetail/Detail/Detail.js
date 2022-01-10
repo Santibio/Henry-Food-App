@@ -1,6 +1,7 @@
 import React, { memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteRecipeDetail,
   getRecipeByID,
 
 } from "../../../actions";
@@ -22,6 +23,9 @@ export const Detail = memo(() => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getRecipeByID(id));
+    return function cleanup(){
+      dispatch(deleteRecipeDetail())
+    }
   }, [dispatch, id]);
 
   if (Object.keys(recipeDetail).length === 0) return <Loading />;

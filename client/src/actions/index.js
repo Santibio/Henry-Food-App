@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Redirect } from 'react-router-dom';
+
 
 export const GET_RECIPES = "GET_RECIPES";
 export const DELETE_RECIPES = "DELETE_RECIPES";
@@ -11,14 +11,14 @@ export const SEARCH_RECEPI = "SEARCH_RECEPI";
 export const GET_RECIPE_BY_ID = "GET_RECIPE_BY_ID";
 export const ERROR = "ERROR";
 
-export function getRecipes(){
+export function getRecipes(history){
     return async function(dispatch){
       try{
         const response = await axios.get("http://localhost:3001/api/recipes");
         dispatch({ type: GET_RECIPES, payload: response.data});
 
       }catch(error){
-       console.log(error)
+        alert(error)
       }
     }
 }
