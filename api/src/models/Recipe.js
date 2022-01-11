@@ -30,6 +30,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         validate: {
           isInt: true,
+          min: 0,
         },
       },
       healthScore: {

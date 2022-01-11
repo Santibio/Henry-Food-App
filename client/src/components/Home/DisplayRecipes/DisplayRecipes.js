@@ -26,11 +26,11 @@ export const DisplayRecipes = () => {
     if (filter) {
       if (filter === "order")  return dispatch(orderBy(type))
       dispatch(deleteRecipes());
-      return dispatch(filterBy(filter, type));
+      return dispatch(filterBy(filter, type, history));
     }
     if (search) {
       dispatch(deleteRecipes());
-      return dispatch(searchRecepi(search));
+      return dispatch(searchRecepi(search, history));
     }
     dispatch(getRecipes(history));
   }, [dispatch, filter, type, search]);

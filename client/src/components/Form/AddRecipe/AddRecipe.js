@@ -27,9 +27,7 @@ export const AddRecipe = memo(() => {
     prueba: 0
   });
   const { fase } = inputForm;
-
   const history = useHistory();
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDiets());
@@ -38,7 +36,6 @@ export const AddRecipe = memo(() => {
   const nextFase = (e) => {
     e.preventDefault();
     if (!errorValidator(errors)) {
-      const { fase } = inputForm;
       setInputForm({
         ...inputForm,
         fase: fase + 1,
@@ -47,6 +44,7 @@ export const AddRecipe = memo(() => {
       alert("One or more fields are incorrect");
     }
   };
+
   const prevFase = (e) => {
     e.preventDefault();
     setInputForm({
@@ -54,6 +52,7 @@ export const AddRecipe = memo(() => {
       fase: fase - 1,
     });
   };
+  
   const handlerChange = (e) => {
     const { name, value } = e.target;
     setInputForm((prev) => ({
@@ -135,7 +134,6 @@ export const AddRecipe = memo(() => {
           />
         )}
         {fase === 2 && <Diets dietsHandler={dietsHandler} />}
-        {/*  {fase === 3 && <Steps stepsHandler={stepsHandler}/>} */}
         {fase === 3 && (
           <Steps2
             handlerChange={handlerChange}

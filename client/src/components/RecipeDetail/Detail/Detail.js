@@ -1,11 +1,7 @@
 import React, { memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteRecipeDetail,
-  getRecipeByID,
-
-} from "../../../actions";
-import { useParams } from "react-router-dom";
+import { deleteRecipeDetail, getRecipeByID } from "../../../actions";
+import { useHistory, useParams } from "react-router-dom";
 import style from "./Detail.module.css";
 import Presentation from "./Presentation/Presentation";
 import ImageRecipe from "./ImageRecipe/ImageRecipe";
@@ -18,14 +14,14 @@ import { DeleteRecipe } from "./DeleteRecipe/DeleteRecipe";
 
 export const Detail = memo(() => {
   const { id } = useParams();
-
+  const history = useHistory();
   const { recipeDetail } = useSelector((state) => state);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getRecipeByID(id));
-    return function cleanup(){
-      dispatch(deleteRecipeDetail())
-    }
+    dispatch(getRecipeByID(id, history));
+    return function cleanup() {
+      dispatch(deleteRecipeDetail());
+    };
   }, [dispatch, id]);
 
   if (Object.keys(recipeDetail).length === 0) return <Loading />;

@@ -2,17 +2,18 @@ const axios = require("axios");
 const { YOUR_API_KEY } = process.env;
 
 const getAllRecipesAPI = async () => {
-  /* try { */
+  try {
     const allAPIRecepies = await axios.get(
       `https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${YOUR_API_KEY}&addRecipeInformation=true`
     );
     return mapper(allAPIRecepies.data.results);
-  /* } catch (error) {
-    return error
-  } */
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 const getRecipesByNameAPI = async (name) => {
+
   try {
      const allAPIRecepies = await getAllRecipesAPI();
      return allAPIRecepies.filter((r) => r.name.toLowerCase().includes(name));

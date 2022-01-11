@@ -12,7 +12,7 @@ const {
   getRecipeByIdDB,
 } = require("../utils/fx_RecipeDB");
 const { sortRecipes } = require("../utils/fx_SortRecipes");
-const { queryValidator, formValidator } = require("../utils/fx_validators");
+const { formValidator } = require("../utils/fx_validators");
 
 // Configuro rutas recipes
 
@@ -26,14 +26,15 @@ router.get("/recipes", async (req, res, next) => {
       AllRecipesAPI = await getRecipesByNameAPI(name.toLowerCase());
       AllRecipesDB = await getRecipesByNameDB(name.toLowerCase());
     } else {
-        AllRecipesAPI = await getAllRecipesAPI();
-        AllRecipesDB = await getAllRecipesDB();
+      AllRecipesAPI = await getAllRecipesAPI();
+      AllRecipesDB = await getAllRecipesDB();
     }
+
     return res
       .status(200)
       .json(sortRecipes([...AllRecipesAPI, ...AllRecipesDB]));
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
 
@@ -52,7 +53,7 @@ router.get("/recipes/:idRecipe", async (req, res, next) => {
       return res.json(recipeAPI);
     }
   } catch (error) {
-     next(error);
+    next(error);
     return res.json({ msg: "Recipe not found" });
   }
 });
@@ -73,9 +74,8 @@ router.post("/recipe", async (req, res, next) => {
 
     // Valida que lo que llegue sea correcto
     if (Object.keys(formValidator(req.body)).length <= 0 ? false : true) {
-      return res.json(formValidator(req.body));
+      return res.status(400).json(formValidator(req.body));
     }
-
 
     const [recipe, status] = await Recipe.findOrCreate({
       where: {
@@ -87,7 +87,7 @@ router.post("/recipe", async (req, res, next) => {
         healthScore,
         image,
         steps,
-        readyInMinutes
+        readyInMinutes,
       },
     });
 
@@ -97,13 +97,14 @@ router.post("/recipe", async (req, res, next) => {
 
     await recipe.addDiet(dietsDb);
 
-    return res.json(
-      status
-        ? { msg: "Correctly created recipe", status, recipe }
-        : { msg: "There is already a recipe with that name", status }
-    );
+    return res
+      .status(201)
+      .json(
+        status
+          ? { msg: "Correctly created recipe", status, recipe }
+          : { msg: "There is already a recipe with that name", status, recipe }
+      );
   } catch (error) {
-    next(error);
     return res.status(404).json({
       msg: "Error when creating a recipe",
     });

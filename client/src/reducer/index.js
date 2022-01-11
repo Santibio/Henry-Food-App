@@ -13,19 +13,8 @@ const initialState = {
   recipes: [],
   recipeDetail: {},
   diets: [],
-  dietsSinBack: [
-    "gluten free",
-    "dairy free",
-    "lacto ovo vegetarian",
-    "vegan",
-    "paleolithic",
-    "whole 30",
-    "pescatarian",
-    "primal",
-    "fodmap friendly",
-    "vegetarian",
-  ],
 };
+
 const cases = {}
 
 cases[GET_RECIPES] = (state,payload)=>({...state, recipes:payload});
@@ -57,6 +46,24 @@ cases[ORDER_BY] = (state, payload) => {
       recipes: state.recipes.sort((a, b) => {
         if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
         if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+        return 0;
+      }),
+    };
+  if (payload === "Score Asc")
+    return {
+      ...state,
+      recipes: state.recipes.sort((a, b) => {
+        if (a.score > b.score) return -1;
+        if (a.score < b.score) return 1;
+        return 0;
+      }),
+    };
+  if (payload === "Score Desc")
+    return {
+      ...state,
+      recipes: state.recipes.sort((a, b) => {
+        if (a.score < b.score) return -1;
+        if (a.score > b.score) return 1;
         return 0;
       }),
     };

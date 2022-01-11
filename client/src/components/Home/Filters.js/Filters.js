@@ -8,7 +8,7 @@ export const Filters = memo(() => {
     <>
       <FilterDiets />
       <DropdownMenu
-        filterItems={["Asc", "Desc"]}
+        filterItems={["Asc", "Desc", "Score Asc", "Score Desc"]}
         filterType="order"
         filterName="Order By"
         color="#3654d1"

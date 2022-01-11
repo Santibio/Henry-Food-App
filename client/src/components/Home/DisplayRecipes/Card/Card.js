@@ -11,7 +11,7 @@ const Card2 = ({ id, name, img, diets }) => {
         <h3>{name}</h3>
         <p>
           {diets?.map((g) => (
-            <span key={g}>{g} </span>
+            <span key={g}>{g}</span>
           ))}
         </p>
         <Link

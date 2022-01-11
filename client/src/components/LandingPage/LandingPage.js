@@ -11,8 +11,8 @@ import { Link } from "react-router-dom";
 export const LandingPage = () => {
   return (
     <div>
-      <Main c1="#eee4be" c2="#f1c5bb">
-        <Glass width="80%">
+      <Main >
+        <Glass >
           <div className={style.landingPageContainer}>
             <div className={style.sectionLeft}>
               <h1>Henry Food APP</h1>
