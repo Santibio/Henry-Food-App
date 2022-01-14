@@ -20,6 +20,25 @@
     text-align: left;
     font-size: 1rem;
 }
+.listContainer{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: .5rem 1rem;
+}
+.listContainer li{
+  width: 90%;
+}
+.listContainer button{
+  border: none;
+    border-radius: 1rem;
+    padding: .3rem .5rem;
+    background-color: #F44336;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease,
+}
 .stepContainer {
   display: flex;
   gap: 5px;

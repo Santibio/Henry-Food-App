@@ -7,7 +7,7 @@ const Summary = () => {
   const { summary,score,healthScore } = recipeDetail;
   return (
     <div>
-      <div dangerouslySetInnerHTML={{ __html: summary }}></div> 
+      <div dangerouslySetInnerHTML={{ __html: summary }} className={style.summary}></div> 
       <div className={style.scoreContainer}>
         <p>
           <span>Score: </span>

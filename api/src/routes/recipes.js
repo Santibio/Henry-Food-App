@@ -76,6 +76,7 @@ router.post("/recipe", async (req, res, next) => {
     if (Object.keys(formValidator(req.body)).length <= 0 ? false : true) {
       return res.status(400).json(formValidator(req.body));
     }
+   
 
     const [recipe, status] = await Recipe.findOrCreate({
       where: {

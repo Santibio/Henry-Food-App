@@ -12,19 +12,18 @@ export const GET_RECIPE_BY_ID = "GET_RECIPE_BY_ID";
 export const ERROR = "ERROR";
 
 
-
+/* Actions: */
 export function getRecipes(history){
-    return async function(dispatch){
-      try{
-        const response = await axios.get("http://localhost:3001/api/recipes");
-        dispatch({ type: GET_RECIPES, payload: response.data});
-      }catch(error){
-        alert(error + ". Please change de api key")
-        history.push("/404")
-      }
+  return async function(dispatch){
+    try{
+      const response = await axios.get("http://localhost:3001/api/recipes");
+      dispatch({ type: GET_RECIPES, payload: response.data});
+    }catch(error){
+      alert(error + ". Please change de api key")
+      history.push("/404")
     }
+  }
 }
-
 
 export function deleteRecipes(){
     return { type: DELETE_RECIPES, payload: []};

@@ -74,6 +74,24 @@ export const AddRecipe = memo(() => {
     }));
   }; 
 
+  const deleteStepsHandler = (e,number) =>{
+    e.preventDefault()
+    console.log(number)
+     setInputForm((prev) => ({
+       ...prev,
+       steps: prev.steps.filter(s => s.number !== number),
+     }));
+  }
+/*   const editStepsHandler = (e,number,value) =>{
+    e.preventDefault()
+    console.log(number)
+    console.log(number)
+     setInputForm((prev) => ({
+       ...prev,
+       steps: prev.steps.forEach(s=> s.number === 1 ? s.step = value : ""),
+     }));
+  }
+ */
 
   const dietsHandler = (e) => {
     const { checked, value } = e.target;
@@ -139,6 +157,7 @@ export const AddRecipe = memo(() => {
             handlerChange={handlerChange}
             values={inputForm}
             stepsHandler={stepsHandler}
+            deleteStepsHandler={deleteStepsHandler}
           />
         )}
       </form>

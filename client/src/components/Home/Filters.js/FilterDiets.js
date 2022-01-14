@@ -9,8 +9,8 @@ export const FilterDiets = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     useEffect(() => {
-      if (diets.length<=0) dispatch(getDiets(history));
-    }, [dispatch])
+      if (diets.length <= 0) dispatch(getDiets(history));
+    }, [dispatch, history, diets]);
     return (
       <>
         <DropdownMenu2

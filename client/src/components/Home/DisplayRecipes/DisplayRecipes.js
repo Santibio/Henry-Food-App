@@ -18,13 +18,13 @@ import ButtonNext from "../../UI/ButtonsPage/ButtonNext";
 export const DisplayRecipes = () => {
   const { filter, type, search } = useParams();
   const { recipes } = useSelector((state) => state);
-  const NUM_PAGES = 9;
+  const NUM_PAGES = 12;
   const dispatch = useDispatch();
   const history = useHistory()
 
   useEffect(() => {
     if (filter) {
-      if (filter === "order")  return dispatch(orderBy(type))
+      if (filter === "order") return dispatch(orderBy(type));
       dispatch(deleteRecipes());
       return dispatch(filterBy(filter, type, history));
     }
@@ -33,7 +33,7 @@ export const DisplayRecipes = () => {
       return dispatch(searchRecepi(search, history));
     }
     dispatch(getRecipes(history));
-  }, [dispatch, filter, type, search]);
+  }, [dispatch, filter, type, search, history]);
 
   const [currentPage, setCurrentPage] = useState(0);
   const recipesPages = (recipe) => {

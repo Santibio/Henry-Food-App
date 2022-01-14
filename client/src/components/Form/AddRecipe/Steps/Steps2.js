@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import style from "./Steps.module.css";
 
-const Steps = ({ values, stepsHandler }) => {
+const Steps = ({ values, stepsHandler,deleteStepsHandler }) => {
   const { steps } = values;
   const [step, setStep] = useState("");
+ /*  const [editable,setEditable] = useState(false) */
 
   const stepHandler = (e) => {
     setStep(e.target.value);
@@ -16,9 +17,16 @@ const Steps = ({ values, stepsHandler }) => {
       setStep("")
     } else {
       alert("Step cannot be empty");
-    }
-  };
-
+    }}
+/*   };
+const editableHandler = (e,number,value)=>{
+  e.preventDefault()
+ if (!editable) {
+   setEditable(true)
+ }else{
+   stepsHandler(e.target.previousSibling.innerText);
+ }
+} */
   return (
     <div>
       <div className={style.inputFormContainer}>
@@ -29,7 +37,17 @@ const Steps = ({ values, stepsHandler }) => {
         </div>
         <ol>
           {steps.map((s) => (
-            <li key={s.number}>{s.step}</li>
+            <div key={s.number} className={style.listContainer}>
+              <li id={s.number}>{s.step}</li>
+        
+              <button
+                onClick={(e) =>
+                  deleteStepsHandler(e, parseInt(e.target.previousSibling.id))
+                }
+              >
+               Delete
+              </button>
+            </div>
           ))}
         </ol>
       </div>

@@ -22,7 +22,7 @@ export const Detail = memo(() => {
     return function cleanup() {
       dispatch(deleteRecipeDetail());
     };
-  }, [dispatch, id]);
+  }, [dispatch, id, history]);
 
   if (Object.keys(recipeDetail).length === 0) return <Loading />;
 

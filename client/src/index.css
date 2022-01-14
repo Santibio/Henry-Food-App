@@ -33,11 +33,13 @@
   --xxl-bk: 1400px;
 }
 
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+
   font-family: "Montserrat", sans-serif;
   scrollbar-width: auto;
   scrollbar-color: #ffffff #00000000;

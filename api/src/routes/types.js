@@ -11,8 +11,8 @@ router.get("/types", async (req, res, next) => {
     if (allDiets.length <= 0) {
       console.log("Types of diets  API");
       const DIETS = await getAllDiets();
-      DIETS.forEach((d) => {
-        Diet.findOrCreate({
+       DIETS.forEach((d) => {
+         Diet.findOrCreate({
           where: { name: d },
         });
       });

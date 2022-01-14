@@ -61,6 +61,7 @@ export const DropdownMenu2 = ({
         color={color}
         onChange={optionHandler}
       >
+        
         <Option value="0">Filter by</Option>
         <optgroup label="Diets">
           {filterItems?.map((e) => (
