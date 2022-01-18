@@ -99,7 +99,7 @@ export const AddRecipe = memo(() => {
     };
 
     axios
-      .post("http://localhost:3001/api/recipe", RECIPE, {
+      .post("https://pi-food-api-back.herokuapp.com/recipe", RECIPE, {
         headers: { "Content-Type": "application/json" },
       })
       .then((r) => {

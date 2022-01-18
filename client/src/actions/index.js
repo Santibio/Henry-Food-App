@@ -16,7 +16,9 @@ export const ERROR = "ERROR";
 export function getRecipes(history){
     return async function(dispatch){
       try{
-        const response = await axios.get("http://localhost:3001/api/recipes");
+        const response = await axios.get(
+          "https://pi-food-api-back.herokuapp.com/recipes"
+        );
         dispatch({ type: GET_RECIPES, payload: response.data});
       }catch(error){
         alert(error + ". Please change de api key")
@@ -37,7 +39,9 @@ export function deleteRecipeDetail() {
 export function getDiets(history) {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`http://localhost:3001/api/types`);
+      const response = await axios.get(
+        `https://pi-food-api-back.herokuapp.com/types`
+      );
       dispatch({ type: GET_DIETS, payload: response.data });
     } catch (error) {
       alert(error + ". Please change de api key");
@@ -50,7 +54,7 @@ export function filterBy(filter, type, history) {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/filter?${filter}=${type}`
+        `https://pi-food-api-back.herokuapp.com/filter?${filter}=${type}`
       );
       dispatch({ type: FILTER_BY, payload: response.data });
     } catch (error) {
@@ -69,7 +73,7 @@ export function searchRecepi(recepi, history) {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/recipes?name=${recepi}`
+        `https://pi-food-api-back.herokuapp.com/recipes?name=${recepi}`
       );
       dispatch({ type: SEARCH_RECEPI, payload: response.data });
     } catch (error) {
@@ -83,7 +87,7 @@ export function getRecipeByID(id,history) {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/recipes/${id}`
+        `https://pi-food-api-back.herokuapp.com/recipes/${id}`
       );
       dispatch({ type: GET_RECIPE_BY_ID, payload: response.data });
       
