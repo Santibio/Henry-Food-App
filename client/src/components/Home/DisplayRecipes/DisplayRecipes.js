@@ -18,7 +18,7 @@ import ButtonNext from "../../UI/ButtonsPage/ButtonNext";
 export const DisplayRecipes = () => {
   const { filter, type, search } = useParams();
   const { recipes } = useSelector((state) => state);
-  const NUM_PAGES = 9;
+  const NUM_PAGES = 12;
   const dispatch = useDispatch();
   const history = useHistory()
 

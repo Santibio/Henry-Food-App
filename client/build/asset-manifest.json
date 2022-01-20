@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/PI-Food-Front/static/css/main.acef4a7f.chunk.css",
-    "main.js": "/PI-Food-Front/static/js/main.d1ed4d45.chunk.js",
-    "main.js.map": "/PI-Food-Front/static/js/main.d1ed4d45.chunk.js.map",
-    "runtime-main.js": "/PI-Food-Front/static/js/runtime-main.615a2033.js",
-    "runtime-main.js.map": "/PI-Food-Front/static/js/runtime-main.615a2033.js.map",
-    "static/js/2.0a831231.chunk.js": "/PI-Food-Front/static/js/2.0a831231.chunk.js",
-    "static/js/2.0a831231.chunk.js.map": "/PI-Food-Front/static/js/2.0a831231.chunk.js.map",
-    "static/js/3.2bf34c20.chunk.js": "/PI-Food-Front/static/js/3.2bf34c20.chunk.js",
-    "static/js/3.2bf34c20.chunk.js.map": "/PI-Food-Front/static/js/3.2bf34c20.chunk.js.map",
-    "index.html": "/PI-Food-Front/index.html",
-    "static/css/main.acef4a7f.chunk.css.map": "/PI-Food-Front/static/css/main.acef4a7f.chunk.css.map",
-    "static/js/2.0a831231.chunk.js.LICENSE.txt": "/PI-Food-Front/static/js/2.0a831231.chunk.js.LICENSE.txt",
-    "static/media/cake2.6387825f.webp": "/PI-Food-Front/static/media/cake2.6387825f.webp",
-    "static/media/caret-down-solid.f5845b07.svg": "/PI-Food-Front/static/media/caret-down-solid.f5845b07.svg",
-    "static/media/caret-up-solid.eccba66f.svg": "/PI-Food-Front/static/media/caret-up-solid.eccba66f.svg",
-    "static/media/pizza1.f1bfde8b.png": "/PI-Food-Front/static/media/pizza1.f1bfde8b.png",
-    "static/media/portada.b7937bc3.jpg": "/PI-Food-Front/static/media/portada.b7937bc3.jpg",
-    "static/media/salad.a6b8557a.png": "/PI-Food-Front/static/media/salad.a6b8557a.png"
+    "main.css": "/static/css/main.acef4a7f.chunk.css",
+    "main.js": "/static/js/main.8d19338c.chunk.js",
+    "main.js.map": "/static/js/main.8d19338c.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.47bff92e.js",
+    "runtime-main.js.map": "/static/js/runtime-main.47bff92e.js.map",
+    "static/js/2.f8f2ea8e.chunk.js": "/static/js/2.f8f2ea8e.chunk.js",
+    "static/js/2.f8f2ea8e.chunk.js.map": "/static/js/2.f8f2ea8e.chunk.js.map",
+    "static/js/3.2bf34c20.chunk.js": "/static/js/3.2bf34c20.chunk.js",
+    "static/js/3.2bf34c20.chunk.js.map": "/static/js/3.2bf34c20.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.acef4a7f.chunk.css.map": "/static/css/main.acef4a7f.chunk.css.map",
+    "static/js/2.f8f2ea8e.chunk.js.LICENSE.txt": "/static/js/2.f8f2ea8e.chunk.js.LICENSE.txt",
+    "static/media/cake2.6387825f.webp": "/static/media/cake2.6387825f.webp",
+    "static/media/caret-down-solid.f5845b07.svg": "/static/media/caret-down-solid.f5845b07.svg",
+    "static/media/caret-up-solid.eccba66f.svg": "/static/media/caret-up-solid.eccba66f.svg",
+    "static/media/pizza1.f1bfde8b.png": "/static/media/pizza1.f1bfde8b.png",
+    "static/media/portada.b7937bc3.jpg": "/static/media/portada.b7937bc3.jpg",
+    "static/media/salad.a6b8557a.png": "/static/media/salad.a6b8557a.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.615a2033.js",
-    "static/js/2.0a831231.chunk.js",
+    "static/js/runtime-main.47bff92e.js",
+    "static/js/2.f8f2ea8e.chunk.js",
     "static/css/main.acef4a7f.chunk.css",
-    "static/js/main.d1ed4d45.chunk.js"
+    "static/js/main.8d19338c.chunk.js"
   ]
 }
