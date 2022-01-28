@@ -13,7 +13,6 @@ const getAllRecipesAPI = async () => {
 };
 
 const getRecipesByNameAPI = async (name) => {
-
   try {
      const allAPIRecepies = await getAllRecipesAPI();
      return allAPIRecepies.filter((r) => r.name.toLowerCase().includes(name));

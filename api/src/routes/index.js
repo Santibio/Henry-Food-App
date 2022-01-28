@@ -6,8 +6,9 @@ const filters = require("./filters");
 const router = Router();
 
 // Configurar los routers
-router.use("/api", recipies);
-router.use("/api", types);
-router.use("/api", filters);
+
+router.use("/", recipies);
+router.use("/", types);
+router.use("/", filters);
 
 module.exports = router;

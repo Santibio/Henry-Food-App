@@ -13,7 +13,7 @@ export const DeleteRecipe = ({id}) => {
   const deleteRecipeHandler = () => {
     if (window.confirm("Are you sure you want to delete this recipe?")) {
       axios
-        .delete(`http://localhost:3001/api/recipe/${id}`)
+        .delete(`https://pi-food-api-back.herokuapp.com/recipe/${id}`)
         .then((response) => {
           alert(response.data.msg);
           dispatch(deleteRecipes());

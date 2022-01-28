@@ -59,6 +59,7 @@ const getRecipeByIdDB = (id) => {
 };
 
 const mapper = (ArrayObj) => {
+  console.log(ArrayObj);
   return ArrayObj.map(
     ({
       id,
