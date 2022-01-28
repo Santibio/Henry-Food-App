@@ -3,6 +3,8 @@
 Web application where you can find different types of cooking recipes connected through the Spoonacular API.From there you can filter, order, create and delete them.   
 LINK: https://henry-food-app.netlify.app/home 
 
+<img height="200" src="./cooking.png" />
+
 ### Requirements 📋
 
 If you like to run local you will need to:
