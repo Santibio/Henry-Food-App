@@ -14,6 +14,7 @@ function formValidator(types) {
     steps,
     readyInMinutes,
   } = types;
+  
   let errors = {};
 
   /* Validate name */
