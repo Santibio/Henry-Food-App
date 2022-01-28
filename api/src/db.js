@@ -4,19 +4,20 @@ const fs = require('fs');
 const path = require('path');
 const { PG_USER, PG_PASSWORD, PG_HOST, PG_DATABASE } = process.env;
 
+console.log(process.env.NODE_ENV);
 const sequelize = new Sequelize(
   process.env.NODE_ENV === "production"
     ? process.env.DATABASE_URL
     : `postgres://${PG_USER}:${PG_PASSWORD}@${PG_HOST}/${PG_DATABASE}`,
   {
     logging: false, // set to console.log to see the raw SQL queries
-    native: false,
+    native: false
     /* dialectOptions: {
       ssl: {
         require: true, // This will help you. But you will see nwe error
         rejectUnauthorized: false, // This line will fix new error
       },
-    },  */// lets Sequelize know we can use pg-native for ~30% more speed
+    }  */// lets Sequelize know we can use pg-native for ~30% more speed
   }
 );
 

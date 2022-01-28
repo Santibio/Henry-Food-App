@@ -11,8 +11,8 @@ export const SEARCH_RECEPI = "SEARCH_RECEPI";
 export const GET_RECIPE_BY_ID = "GET_RECIPE_BY_ID";
 export const ERROR = "ERROR";
 
-const URL = "https://localhost:3001";
-/* const URL = "https://pi-food-api-back.herokuapp.com"; */ //DEPLOYED URL
+// const URL = "https://localhost:3001";
+const URL = "https://pi-food-api-back.herokuapp.com"; //DEPLOYED URL
 /* Actions: */
 export function getRecipes(history){
     return async function(dispatch){
