@@ -1,7 +1,7 @@
 # Henry Food App
 
 Web application where you can find different types of cooking recipes connected through the Spoonacular API.From there you can filter, order, create and delete them. 
-Link: https://henry-food-app.netlify.app/home
+LINK: https://henry-food-app.netlify.app/home
 
 ### Requirements 📋
 
@@ -18,7 +18,7 @@ PG_HOST= localhost
 PG_DATABASE = food
 YOUR_API_KEY= YOUR_API_KEY
 ```
-Otherwise you can use the database already uploaded to heroku
+Otherwise you can use the database already uploaded to heroku. LINK: https://pi-food-api-back.herokuapp.com
 
 
 
